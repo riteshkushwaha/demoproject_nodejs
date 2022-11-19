@@ -5,6 +5,7 @@ const port = 3000
 const express = require('express')
 const app = express()
 const routes = require('./routes/route_task')
+require('dotenv').config()
 
 //for calling connectDB function which call mongoose method
 const connectDB = require('./db/connect')
@@ -33,7 +34,7 @@ app.use('/api/v1/tasks',routes)
 // then after server start i.e. app.listen called
 const start = async()=>{
     try{
-        await connectDB()
+        await connectDB(process.env.MONGO_URI)
         app.listen(port,console.log(`server is listening on port ${port}`))
     }catch(error){
         console.log(error)

@@ -1,4 +1,4 @@
-const { url } = require('inspector')
+
 const mongoose = require('mongoose')
 
 const connectionString = 
@@ -15,7 +15,7 @@ const connectionString =
 // url : is connectionString
 const connectDB = (url)=>{
     return mongoose
-    .connect(connectionString)
+    .connect(url)
 }
 
 module.exports = connectDB
